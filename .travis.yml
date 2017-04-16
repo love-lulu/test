@@ -4,12 +4,12 @@ node_js:
 - 6
 
 before_install:
-- openssl aes-256-cbc -K $encrypted_af7dcaddf5a7_key -iv $encrypted_af7dcaddf5a7_iv:/home/zhangning
+- openssl aes-256-cbc -K $encrypted_af7dcaddf5a7_key -iv $encrypted_af7dcaddf5a7_iv
  -in  .travis/id_rsa.enc -out id_rsa -d
 
 
 after_script:
-- scp -o StrictHostKeyChecking=no name.js root@59.110.168.70
+- scp -o StrictHostKeyChecking=no name.js root@59.110.168.70:/home/zhangning
 - mv id_rsa ~/.ssh -f
 - chmod 600 ~/.ssh/id_rsa
 
