@@ -2,15 +2,14 @@ language: node_js
 node_js:
 - 6
 after_script:
-- scp -o StrictHostKeyChecking=no name.js root@59.110.168.70  
+- scp -o StrictHostKeyChecking=no name.js root@59.110.168.70
 before_install:
+- openssl aes-256-cbc -K $encrypted_689bc6a4ab50_key -iv $encrypted_689bc6a4ab50_iv
+  -in id_rsa.enc -out id_rsa -d
 - openssl aes-256-cbc -K $encrypted_af7dcaddf5a7_key -iv $encrypted_af7dcaddf5a7_iv
   -in  id_rsa.enc -out id_rsa -d
 - mv id_rsa ~/.ssh -f
 - chmod 600 ~/.ssh/id_rsa
-
 - eval $(ssh-agent)
-
 - ssh-add ~/.ssh/id_rsa
-
-- cp .travis/ssh_config ~/.ssh/config
+- cp /.ssh_config ~/.ssh/config
